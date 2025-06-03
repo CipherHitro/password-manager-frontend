@@ -42,7 +42,7 @@ const Login = () => {
       path: '/', // Cookie path, '/' for entire domain
       secure: true, // Send only over HTTPS
       sameSite: 'None', // Allow cross-site access if necessary
-      domain: 'password-manager-backend-lltg.onrender.com' 
+      domain: 'https://password-manager-backend-lltg.onrender.com' 
     });
       navigate('/');
       setTimeout(() => {
