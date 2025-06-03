@@ -37,7 +37,12 @@ const Login = () => {
     console.log("json : ", result)
 
     if (response.ok) {
-      // Cookies.set('uid', result.token)
+      Cookies.set('uid', result.token, {
+      expires: 7, // Expiry in days
+      path: '/', // Cookie path, '/' for entire domain
+      secure: true, // Send only over HTTPS
+      sameSite: 'None', // Allow cross-site access if necessary
+    });
       navigate('/');
       setTimeout(() => {
         toast.success('Logged in successfully!');
