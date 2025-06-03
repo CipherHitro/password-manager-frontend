@@ -29,6 +29,7 @@ const Login = () => {
       headers: {
         "Content-Type": "application/json"
       },
+      credentials: 'include',
       body: JSON.stringify(data)
     })
     console.log("response: ", response)
@@ -36,7 +37,7 @@ const Login = () => {
     console.log("json : ", result)
 
     if (response.ok) {
-      Cookies.set('uid', result.token)
+      // Cookies.set('uid', result.token)
       navigate('/');
       setTimeout(() => {
         toast.success('Logged in successfully!');
