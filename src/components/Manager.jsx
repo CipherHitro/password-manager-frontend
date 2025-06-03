@@ -9,13 +9,17 @@ const Manager = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [passwords, setPasswords] = useState([])
     const [form, setForm] = useState({ site: "", username: "", password: "" })
-    const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:2000"; 
+    const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:2000";
 
     const fetchPasswords = async () => {
         try {
+            console.log('Cookies being sent:', document.cookie);
             const response = await fetch(`${API_BASE_URL}/password`, {
                 method: "GET",
-                credentials: 'include'
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
             })
             if (response.status === 401) {
                 setPasswords([])
