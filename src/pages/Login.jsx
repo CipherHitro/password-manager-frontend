@@ -9,6 +9,8 @@ import Cookies from 'js-cookie'
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:2000";
+
   const {
     register,
     handleSubmit,
@@ -22,7 +24,7 @@ const Login = () => {
   const onSubmit = async (data) => {
     console.log(data);
 
-    const response = await fetch('http://localhost:2000/user/login', {
+    const response = await fetch(`${API_BASE_URL}/user/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

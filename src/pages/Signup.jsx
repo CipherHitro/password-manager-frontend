@@ -9,7 +9,8 @@ const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const navigate = useNavigate();
-
+  const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:2000";
+  
   const {
     register,
     handleSubmit,
@@ -34,7 +35,7 @@ const Signup = () => {
     console.log('Data to send to API:', signupData);
     console.log(typeof signupData)
 
-    const response = await fetch('http://localhost:2000/user/signup', {
+    const response = await fetch(`${API_BASE_URL}/user/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
