@@ -9,7 +9,7 @@ import Cookies from 'js-cookie'
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
-  const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:2000";
+  // const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:2000";
 
   const {
     register,
@@ -24,7 +24,7 @@ const Login = () => {
   const onSubmit = async (data) => {
     console.log(data);
 
-    const response = await fetch(`${API_BASE_URL}/user/login`, {
+    const response = await fetch(`/api/user/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -37,12 +37,12 @@ const Login = () => {
     console.log("json : ", result)
 
     if (response.ok) {
-      Cookies.set('uid', result.token, {
-        expires: 7, // Expiry in days
-        path: '/', // Cookie path, '/' for entire domain
-        secure: true, // Send only over HTTPS
-        sameSite: 'None', // Allow cross-site access if necessary
-      });
+      // Cookies.set('uid', result.token, {
+      //   expires: 7, // Expiry in days
+      //   path: '/', // Cookie path, '/' for entire domain
+      //   secure: true, // Send only over HTTPS
+      //   sameSite: 'None', // Allow cross-site access if necessary
+      // });
       navigate('/');
       setTimeout(() => {
         toast.success('Logged in successfully!');

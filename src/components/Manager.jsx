@@ -9,12 +9,12 @@ const Manager = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [passwords, setPasswords] = useState([])
     const [form, setForm] = useState({ site: "", username: "", password: "" })
-    const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:2000";
+    // const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:2000";
 
     const fetchPasswords = async () => {
         try {
             console.log('Cookies being sent:', document.cookie);
-            const response = await fetch(`${API_BASE_URL}/password`, {
+            const response = await fetch(`/api/password`, {
                 method: "GET",
                 credentials: 'include',
                 headers: {
@@ -64,7 +64,7 @@ const Manager = () => {
     const savePassword = async () => {
 
         try {
-            const response = await fetch(`${API_BASE_URL}/password`, {
+            const response = await fetch(`/api/password`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -105,7 +105,7 @@ const Manager = () => {
 
     const handleDelete = async (id) => {
         if (confirm("Do you want to delete the password?")) {
-            const response = await fetch(`${API_BASE_URL}/password/${id}`, {
+            const response = await fetch(`/api/password/${id}`, {
                 method: "DELETE",
                 credentials: "include",
             })
