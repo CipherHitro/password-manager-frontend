@@ -38,7 +38,6 @@ const Login = () => {
 
     if (response.ok) {
       Cookies.set('uid', result.token, {
-        httpOnly: true,
         expires: 7, // Expiry in days
         path: '/', // Cookie path, '/' for entire domain
         secure: true, // Send only over HTTPS
