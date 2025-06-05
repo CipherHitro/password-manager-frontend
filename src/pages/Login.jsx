@@ -173,9 +173,9 @@ const Login = () => {
                         Remember me
                       </label>
                     </div>
-                    <a href="#" className="text-sm text-blue-600 hover:text-blue-500 transition-colors">
+                    <NavLink to="/forgot-password" className="text-sm text-blue-600 hover:text-blue-500 transition-colors">
                       Forgot password?
-                    </a>
+                    </NavLink>
                   </div>
 
                   {/* Submit Button */}
