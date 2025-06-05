@@ -193,7 +193,7 @@ const VerifyOTP = () => {
                                     <label className="block text-sm font-medium text-gray-700 mb-4 text-center">
                                         Enter verification code
                                     </label>
-                                    <div className="flex justify-center space-x-3">
+                                    <div className="flex justify-center space-x-1.5 md:space-x-3 ">
                                         {otp.map((digit, index) => (
                                             <input
                                                 key={index}
