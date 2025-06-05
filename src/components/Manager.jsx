@@ -13,7 +13,6 @@ const Manager = () => {
 
     const fetchPasswords = async () => {
         try {
-            console.log('Cookies being sent:', document.cookie);
             const response = await fetch(`/api/password`, {
                 method: "GET",
                 credentials: 'include',
@@ -36,8 +35,6 @@ const Manager = () => {
             console.error("Error:", error);
         }
 
-
-        console.log("passwords : ", passwords)
     }
     useEffect(() => {
         fetchPasswords();
@@ -72,7 +69,6 @@ const Manager = () => {
                 credentials: "include", // to send cookies
                 body: JSON.stringify(form)
             });
-            console.log("response : ", response)
             if (response.status === 401) {
                 navigate('/login');
                 setTimeout(() => {
@@ -81,7 +77,6 @@ const Manager = () => {
 
             }
             const result = await response.json();
-            console.log(result);
             if (response.status == 201) {
 
                 toast.success('Password Saved!');
@@ -110,17 +105,15 @@ const Manager = () => {
                 credentials: "include",
             })
             const result = await response.json()
-            console.log(result);
             toast.error('Deleted successfully!');
             fetchPasswords();
         }
     }
     const handleEdit = (id) => {
-        console.log(id)
 
         setForm(passwords.filter(e => e._id === id)[0])
         let newPasswords = passwords.filter((e) => { return e._id != id });
-        console.log(newPasswords)
+        
 
         setPasswords(newPasswords)
 
