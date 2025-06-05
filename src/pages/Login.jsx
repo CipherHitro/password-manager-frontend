@@ -8,6 +8,8 @@ import Cookies from 'js-cookie'
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
+
   const navigate = useNavigate();
   // const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:2000";
 
@@ -22,14 +24,18 @@ const Login = () => {
   };
 
   const onSubmit = async (data) => {
-
+    const loginData = {
+      email: data.email,
+      password : data.password,
+      rememberMe
+    }
     const response = await fetch(`/api/user/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       credentials: 'include',
-      body: JSON.stringify(data)
+      body: JSON.stringify(loginData)
     })
     const result = await response.json();
 
@@ -164,6 +170,7 @@ const Login = () => {
                       <input
                         id="remember-me"
                         type="checkbox"
+                        onChange={(e) => setRememberMe(e.target.checked)}
                         className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                       />
                       <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-700">
