@@ -89,7 +89,7 @@ const VerifyOTP = () => {
 
         try {
             await new Promise(resolve => setTimeout(resolve, 1000));
-            const response = await fetch('/user/verify-otp', {
+            const response = await fetch('/api/user/verify-otp', {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -121,7 +121,7 @@ const VerifyOTP = () => {
 
         try {
 
-            const response = await fetch('/user/forgot-password', {
+            const response = await fetch('/api/user/forgot-password', {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

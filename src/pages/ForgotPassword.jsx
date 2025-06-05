@@ -15,7 +15,7 @@ const ForgotPassword = () => {
   } = useForm();
   const navigate = useNavigate();
   const onSubmit = async (data) => {
-    const response = await fetch('/user/forgot-password', {
+    const response = await fetch('/api/user/forgot-password', {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
