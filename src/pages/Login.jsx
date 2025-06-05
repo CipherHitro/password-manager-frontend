@@ -22,7 +22,6 @@ const Login = () => {
   };
 
   const onSubmit = async (data) => {
-    console.log(data);
 
     const response = await fetch(`/api/user/login`, {
       method: "POST",
@@ -32,9 +31,7 @@ const Login = () => {
       credentials: 'include',
       body: JSON.stringify(data)
     })
-    console.log("response: ", response)
     const result = await response.json();
-    console.log("json : ", result)
 
     if (response.ok) {
       // Cookies.set('uid', result.token, {
